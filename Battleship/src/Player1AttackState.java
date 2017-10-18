@@ -1,5 +1,3 @@
-
-
 public class Player1AttackState implements GameState{
 
 	@Override

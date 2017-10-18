@@ -5,15 +5,15 @@ import java.io.*;
 import java.net.*;
 
 //TODO The grids need to handle the clicks.
-//The attack grid should check the opponent’s ship positions 
-//(Beware: breaking encapsulation is not permissible. 
-//Think about how you can enhance the attackgrid/playerscreen class to do this).
+//The attack grid should check the opponents ship positions
+//(Beware: breaking encapsulation is not permissible.
+//Think about how you can enhance the attackgridplayerscreen class to do this).
 public class PlayerScreen extends JFrame {
     public PlayerScreen(String name, boolean show) {
         super(name);
         this.setLayout(new BorderLayout());
-        
-        
+
+
         this.add(new SelfGrid(name), BorderLayout.EAST);
         this.add(new AttackGrid(name), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);

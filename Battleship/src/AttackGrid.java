@@ -5,12 +5,12 @@ import java.io.*;
 import java.net.*;
 
 /**
-Represents the player's own grid
+ * Represents the players own grid
 */
 public class AttackGrid extends BattleGrid {
     public AttackGrid(String name) {
         super();
-        
+
     }
 
     @Override
