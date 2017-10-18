@@ -1,6 +1,6 @@
 
 
-public class Player2SetupState implements GameState{
+public class Player2SetupState extends GameState{
 	@Override
 	public void changeState(GameState g){
 		//TODO

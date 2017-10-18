@@ -1,6 +1,8 @@
 
 public class GameState {
 
-	public void changeState(GameState g);
+	public void changeState(GameState g){
+		
+	}
 
 }
