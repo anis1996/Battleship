@@ -1,0 +1,8 @@
+
+
+
+public interface GameStatus {
+	
+	public void changeStatus(GameStatus g);
+
+}
