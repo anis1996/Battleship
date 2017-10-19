@@ -1,9 +1,9 @@
 
 
-public class GameOverState extends GameState{
+public class GameOverState implements GameState{
 
-	@Override
-	public void changeState(GameState g){
-		//TODO
+	public void drawFrame(BattleShip bt)
+	{
+		bt.changeState(new Player1SetupState());
 	}
 }

@@ -1,7 +1,9 @@
-public class Player1AttackState extends GameState{
+public class Player1AttackState implements GameState{
 
-	@Override
-	public void changeState(GameState g){
+	public void drawFrame(BattleShip bt)
+	{
+		bt.changeState(new Player2AttackState());
+		PlayerScreen player1 = new PlayerScreen("Player1", true,bt);
 		
 	}
 }

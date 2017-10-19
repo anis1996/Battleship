@@ -1,8 +1,6 @@
 
-public class GameState {
+public interface GameState {
 
-	public void changeState(GameState g){
-		
-	}
+	public void drawFrame(BattleShip bt);
 
 }
