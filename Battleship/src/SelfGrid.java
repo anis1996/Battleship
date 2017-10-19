@@ -5,12 +5,11 @@ import java.io.*;
 import java.net.*;
 
 /**
-Represents the player's own grid
+ * Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
     public SelfGrid(String name) {
         super();
-        
     }
 
     @Override
