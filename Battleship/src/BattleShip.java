@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class BattleShip {
-	private GameState state ;
+	public GameState state ;
 	public BattleShip()
 	{
 		state = new Player1SetupState();
@@ -20,9 +20,7 @@ public class BattleShip {
     public static void main(String[] args) throws IOException {
     	
     	BattleShip game = new BattleShip();
-    	
-    	
-    		game.drawFrame();
+    	game.drawFrame();
     
     	
 //        PlayerScreen player1 = new PlayerScreen("Player1", true);
