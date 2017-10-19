@@ -19,7 +19,13 @@ public class SelfGrid extends BattleGrid {
         panel.setBackground(Color.black);
         panel.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
-
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                panel.setBackground(Color.white);
+                
+            }
+        });
         return panel;
     }
 }
