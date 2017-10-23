@@ -8,13 +8,13 @@ import java.net.*;
  * Represents the players own grid
 */
 public class AttackGrid extends BattleGrid {
-    public AttackGrid(String name) {
-        super();
+    public AttackGrid(String name, BattleShip bt) {
+        super(bt);
 
     }
 
     @Override
-    protected JPanel getCell()
+    protected JPanel getCell(int i, int j, BattleShip bt)
     {
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
