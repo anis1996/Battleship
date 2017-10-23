@@ -14,8 +14,8 @@ public class PlayerScreen extends JFrame {
         this.setLayout(new BorderLayout());
 
         
-        this.add(new SelfGrid(name), BorderLayout.EAST);
-        this.add(new AttackGrid(name), BorderLayout.WEST);
+        this.add(new SelfGrid(name, bt), BorderLayout.EAST);
+        this.add(new AttackGrid(name, bt), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {

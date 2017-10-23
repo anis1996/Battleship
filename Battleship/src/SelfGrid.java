@@ -8,12 +8,12 @@ import java.net.*;
  * Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
-    public SelfGrid(String name) {
-        super();
+    public SelfGrid(String name, BattleShip bt) {
+        super(bt);
     }
 
     @Override
-    protected JPanel getCell()
+    protected JPanel getCell(int i ,int j , BattleShip bt)
     {
         JPanel panel = new JPanel();
         panel.setBackground(Color.black);
@@ -23,6 +23,11 @@ public class SelfGrid extends BattleGrid {
             @Override
             public void mouseClicked(MouseEvent e) {
                 panel.setBackground(Color.white);
+                if(bt.Player1.ships.size() <= 5)
+            	{
+            	panel.setBackground(Color.white);
+            	bt.Player1.add(i, j);
+            	}
                 
             }
         });
