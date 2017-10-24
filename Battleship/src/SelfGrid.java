@@ -8,27 +8,34 @@ import java.net.*;
  * Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
-    public SelfGrid(String name, BattleShip bs) {
-        super(bs);
+    public SelfGrid(String name, PlayerData pd) {
+        super(pd);
     }
 
     @Override
-    protected JPanel getCell(int i ,int j , BattleShip bs)
+    protected JPanel getCell(int i ,int j , PlayerData pd)
     {
         JPanel panel = new JPanel();
-        panel.setBackground(Color.black);
+        if( pd.get(i, j) == 1)
+        {
+        	panel.setBackground(Color.white);
+        }else 
+        {
+        	panel.setBackground(Color.black);
+        }
         panel.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
-                System.out.println("Check");
-                if(bs.Player1.shipscounter()<= 5)
+               
+                if(pd.shipscounter()<= 5)
             	{
-                	System.out.println("Check2");
-            	panel.setBackground(Color.white);
-            	bs.Player1.add(i, j);
+            	if(i < 8 && j < 8)
+            	{
+            		pd.add(i, j);
+            		panel.setBackground(Color.white);
+            	}
             	}
 
             }

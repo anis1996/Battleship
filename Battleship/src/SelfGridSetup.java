@@ -9,15 +9,15 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 
-public class SelfGridSetup extends BattleGrid {
-	public SelfGridSetup(String name, BattleShip bs)
+public class SelfGridSetup extends SelfGrid {
+	public SelfGridSetup(String name, PlayerData pd)
 	{
-		super(bs);
+		super(name,pd);
 
 	}
 
 	    @Override
-	    protected JPanel getCell(int i ,int j, BattleShip bs)
+	    protected JPanel getCell(int i ,int j, PlayerData pd)
 	    {
 	        JPanel panel = new JPanel();
 	        panel.setBackground(Color.black);
@@ -26,9 +26,19 @@ public class SelfGridSetup extends BattleGrid {
 	        panel.addMouseListener(new MouseAdapter() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
+	            	 if(pd.shipscounter()<= 5)
+	             	{
+	             	if(i < 8 && j < 8)
+	             	{
+	             		pd.add(i, j);
+	             		panel.setBackground(Color.white);
+	             	}
+	             	}
 
 	            }
 	        });
 	        return panel;
 	    }
+
+		
 }

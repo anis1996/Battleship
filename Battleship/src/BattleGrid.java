@@ -5,16 +5,16 @@ import java.io.*;
 import java.net.*;
 
 public abstract class BattleGrid extends JPanel {
-    public BattleGrid(BattleShip bt) {
+    public BattleGrid(PlayerData pd) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JPanel self = new JPanel();
         self.setLayout(new GridLayout(0,10));
         for (int i = 0; i < 10; i++)
             for(int j =0; j < 10; j++) {
-                self.add(getCell(i, j, bt));
+                self.add(getCell(i, j, pd));
             }
         this.add(self);
     }
     
-    protected abstract JPanel getCell(int i,int j, BattleShip bt);
+    protected abstract JPanel getCell(int i,int j, PlayerData pd);
 }

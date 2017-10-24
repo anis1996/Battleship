@@ -39,8 +39,8 @@ public class PlayerData {
 			X1 = x + 1;
 			X2 = x + 2;
 			grid[x][y] = 1;
-			grid[X1][y] = 1;
-			grid[X2][y] = 1;
+			grid[x][y + 1] = 1;
+			grid[x][y+2] = 1;
 		}
 		
 		public boolean hitSink(int x, int y)

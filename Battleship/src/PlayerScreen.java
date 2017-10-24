@@ -9,13 +9,13 @@ import java.net.*;
 //(Beware: breaking encapsulation is not permissible.
 //Think about how you can enhance the attackgridplayerscreen class to do this).
 public class PlayerScreen extends JFrame {
-    public PlayerScreen(String name, boolean show, BattleShip bs) {
+    public PlayerScreen(String name, boolean show, BattleShip bs, SelfGrid sg, AttackGrid ag) {
         super(name);
         this.setLayout(new BorderLayout());
 
 
-        this.add(new SelfGrid(name, bs), BorderLayout.EAST);
-        this.add(new AttackGrid(name, bs), BorderLayout.WEST);
+        this.add(sg, BorderLayout.EAST);
+        this.add(ag, BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {
