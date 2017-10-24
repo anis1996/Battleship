@@ -9,28 +9,28 @@ import java.net.*;
 //(Beware: breaking encapsulation is not permissible.
 //Think about how you can enhance the attackgridplayerscreen class to do this).
 public class PlayerScreen extends JFrame {
-    public PlayerScreen(String name, boolean show, BattleShip bt) {
+    public PlayerScreen(String name, boolean show, BattleShip bs) {
         super(name);
         this.setLayout(new BorderLayout());
 
-        
-        this.add(new SelfGrid(name, bt), BorderLayout.EAST);
-        this.add(new AttackGrid(name, bt), BorderLayout.WEST);
+
+        this.add(new SelfGrid(name, bs), BorderLayout.EAST);
+        this.add(new AttackGrid(name, bs), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 hideScreen();
-                bt.drawFrame();
+                bs.drawFrame();
             }
         });
         this.add(next, BorderLayout.CENTER);
         this.pack();
         this.setVisible(show);
-        
-       
+
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       
+
     }
 
     public void hideScreen() {

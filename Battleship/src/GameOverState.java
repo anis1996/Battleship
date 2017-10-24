@@ -2,8 +2,8 @@
 
 public class GameOverState implements GameState{
 
-	public void drawFrame(BattleShip bt)
+	public void drawFrame(BattleShip bs)
 	{
-		bt.changeState(new Player1SetupState());
+		bs.setState(new Player1SetupState());
 	}
 }

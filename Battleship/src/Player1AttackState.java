@@ -1,8 +1,8 @@
 public class Player1AttackState implements GameState{
 
-	public void drawFrame(BattleShip bt)
+	public void drawFrame(BattleShip bs)
 	{
-		bt.changeState(new Player2AttackState());
-		PlayerScreen player1 = new PlayerScreen("Player1", true, bt);
+		bs.setState(new Player2AttackState());
+		PlayerScreen player1 = new PlayerScreen("Player1", true, bs);
 	}
 }

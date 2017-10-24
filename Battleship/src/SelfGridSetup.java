@@ -10,14 +10,14 @@ import javax.swing.JPanel;
 
 
 public class SelfGridSetup extends BattleGrid {
-	public SelfGridSetup(String name, BattleShip bt)
+	public SelfGridSetup(String name, BattleShip bs)
 	{
-		super(bt);
-		
+		super(bs);
+
 	}
 
 	    @Override
-	    protected JPanel getCell(int i ,int j, BattleShip bt)
+	    protected JPanel getCell(int i ,int j, BattleShip bs)
 	    {
 	        JPanel panel = new JPanel();
 	        panel.setBackground(Color.black);
@@ -26,7 +26,7 @@ public class SelfGridSetup extends BattleGrid {
 	        panel.addMouseListener(new MouseAdapter() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
-	            	
+
 	            }
 	        });
 	        return panel;

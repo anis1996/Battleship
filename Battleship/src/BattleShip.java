@@ -12,21 +12,21 @@ public class BattleShip {
 		Player2 = new PlayerData("Player2");
 	}
 
-	public void changeState(GameState gt)
+	public void setState(GameState gs)
 	{
-		state = gt;
+		state = gs;
 	}
 
 	public void drawFrame()
 	{
 		state.drawFrame(this);
 	}
-	
+
     public static void main(String[] args)  {
 
     	BattleShip game = new BattleShip();
     	game.drawFrame();
-    	
+
 
 //        PlayerScreen player1 = new PlayerScreen("Player1", true);
         //PlayerScreen player2 = new PlayerScreen("Player2", false);
