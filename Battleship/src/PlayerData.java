@@ -9,6 +9,12 @@ public class PlayerData {
 	public PlayerData(String name) {
 		this.name = name;
 		grid = new int[10][10];
+		ships = new ArrayList<ship>();
+	}
+	
+	public int shipscounter()
+	{
+		return ships.size();
 	}
 	
 	public void add(int x , int y)

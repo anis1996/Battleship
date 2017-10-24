@@ -22,9 +22,11 @@ public class SelfGrid extends BattleGrid {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                panel.setBackground(Color.white);
-                if(bs.Player1.ships.size() <= 5)
+                
+                System.out.println("Check");
+                if(bs.Player1.shipscounter()<= 5)
             	{
+                	System.out.println("Check2");
             	panel.setBackground(Color.white);
             	bs.Player1.add(i, j);
             	}
