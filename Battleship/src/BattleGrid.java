@@ -16,5 +16,5 @@ public abstract class BattleGrid extends JPanel {
         this.add(self);
     }
 
-    protected abstract JPanel getCell(int i,int j, PlayerData pd, Boolean isClickable);
+    protected abstract JPanel getCell(int i,int j, PlayerData pd, boolean isClickable);
 }

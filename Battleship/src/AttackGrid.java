@@ -14,7 +14,7 @@ public class AttackGrid extends BattleGrid {
     }
 
     @Override
-    protected JPanel getCell(int i, int j, PlayerData pd)
+    protected JPanel getCell(int i, int j, PlayerData pd, boolean isClickable)
     {
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
