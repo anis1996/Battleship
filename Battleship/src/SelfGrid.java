@@ -31,7 +31,7 @@ public class SelfGrid extends BattleGrid {
                
                 if(pd.shipscounter()<= 5)
             	{
-            	if(i < 8 && j < 8)
+            	if(i < 10 && j < 8)
             	{
             		pd.add(i, j);
             		panel.setBackground(Color.white);
