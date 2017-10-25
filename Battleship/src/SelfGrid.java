@@ -13,7 +13,7 @@ public class SelfGrid extends BattleGrid {
     }
 
     @Override
-    protected JPanel getCell(int i ,int j , PlayerData pd, Boolean isClickable)
+    protected JPanel getCell(int i ,int j , PlayerData pd, boolean isClickable)
     {
         JPanel panel = new JPanel();
         if( pd.get(i, j) == 1)
@@ -40,8 +40,10 @@ public class SelfGrid extends BattleGrid {
               }
 
           }
-      }
-  });
-            return panel;
+      });
+            
         }
+
+        return panel;
     }
+  }
