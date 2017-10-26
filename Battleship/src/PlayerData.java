@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
+// import java.util.Iterator;
 
 public class PlayerData {
 
 	private String name;
 	public ArrayList<Ship> ships;
-	public int[][] grid;
+
 	/**
 	 * Player data constructor
 	 * @param  name [Player name /number]
@@ -15,31 +15,8 @@ public class PlayerData {
 		// @TODO: check if name is needed
 		this.name = name;
 		ships = new ArrayList<Ship>();
-		grid = new int[10][10];
 	}
-	
 
-	public boolean PlayerStatus()
-	{
-		int count = 0;
-		for(int i=0; i<grid.length; i++) {
-	        for(int j=0; j<grid[i].length; j++) {
-	           if(grid[i][j]==2)
-	           {
-	        	   count++;
-	           }
-	        }
-	    }
-		if(count >= 15 )
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-	}
 	/**
 	 * Number of ships a player has
 	 * @return [number of ships]
@@ -57,11 +34,7 @@ public class PlayerData {
 	public void addShip(int x , int y)
 	{
 		ships.add(new Ship(x,y, 3));
-		grid[x][y] = 1;
-		grid[x+1][y] = 1;
-		grid[x+2][y] = 1;
 	}
-	
 
 	/**
 	 * Returns ship at requested index
@@ -83,9 +56,9 @@ public class PlayerData {
 	{
 		Ship s = null;
 
-		for (int i = 1; i <= (ships.size()-1); i++ ) {
-			for (int j = 1; j <= (ships.get(i).coords.size()-1); j++ ) {
-				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
+		for (int i = 1; i < ships.size(); i++ ) {
+			for (int j = 1; j < ships.get(i).coords.size(); j++ ) {
+				if (ships.get(i).coords.get(j).getX() == x && ships.get(i).coords.get(j).getY() == y) {
 					s = ships.get(i);
 				}
 			}
@@ -101,15 +74,24 @@ public class PlayerData {
 	 * @return   [if a ship is hit or not]
 	 */
 	public boolean isHit(int x, int y){
-		for (int i = 1; i <= (ships.size()-1); i++ ) {
-			for (int j = 1; j <= (ships.get(i).coords.size()-1); j++ ) {
+		for (int i = 1; i < ships.size(); i++ ) {
+			for (int j = 1; j < ships.get(i).coords.size(); j++ ) {
 				if (ships.get(i).coords.get(j).getX() == x && ships.get(i).coords.get(j).getY() == y) {
 					return true;
 				}
 			}
 		}
-
 		return false;
+	}
+
+	/**
+	 * [isThereShip description]
+	 * @param  x [description]
+	 * @param  y [description]
+	 * @return   [description]
+	 */
+	public boolean isThereShip(int x, int y){
+		return this.isHit(x,y);
 	}
 
 	/**
@@ -117,7 +99,6 @@ public class PlayerData {
 	 */
 	public void clear(){
 		this.ships.clear();
-		grid = new int[10][10];
 	}
 
 	/**
@@ -136,7 +117,7 @@ public class PlayerData {
 		public Ship(){
 			size = -1;
 			count = -1;
-			coords = null;
+			orientation = "";
 		}
 
 		/**
@@ -176,7 +157,7 @@ public class PlayerData {
 		 * @return   [if ship is hit or not]
 		 */
 		public boolean isHit(int x, int y, boolean countUp){
-			for (int i = 1; i <= (coords.size() -1) ; i++ ) {
+			for (int i = 1; i < coords.size(); i++ ) {
 				if (coords.get(i).getX() == x && coords.get(i).getY() == y) {
 					// @TODO: check if we need to count up or not
 					if (countUp) {
