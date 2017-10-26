@@ -30,7 +30,7 @@ public class SelfGrid extends BattleGrid {
                 @Override
                 public void mouseClicked(MouseEvent e) {
 
-                    if(pd.shipsCount()<= 5)
+                    if(pd.shipsCount()< 5)
                     {
                      if(i < 8 && j < 8)
                      {
