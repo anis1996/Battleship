@@ -13,15 +13,15 @@ public class SelfGrid extends BattleGrid {
     }
 
     @Override
-    protected JPanel getCell(int x ,int y , PlayerData pd, boolean isClickable)
+    protected JPanel getCell(Coordinate c, PlayerData pd, boolean isClickable)
     {
         JPanel panel = new JPanel();
 //        pd.grid[x][y] == 1
 //
 //
         // Color c;
-        // c = (pd.isThereShip(x,y))? Color.white: Color.black;
-        if( pd.isHit(x, y))
+        // c = (pd.isThereShip(c))? Color.white: Color.black;
+        if( pd.isThereShip(c))
         {
         	panel.setBackground(Color.white);
         }else
@@ -38,18 +38,18 @@ public class SelfGrid extends BattleGrid {
 
                     if(pd.shipsCount()< 5)
                     {
-                     if(x < 8 && y < 10 && !pd.isThereShip(x,y))
-                     {
-                      pd.addShip(x, y);
-                      panel.setBackground(Color.white);
+                       if(c.getX() < 8 && c.getY() < 10 && !pd.isThereShip(c))
+                       {
+                          pd.addShip(c);
+                          panel.setBackground(Color.white);
+                      }
                   }
-              }
 
-          }
-      });
+              }
+          });
 
         }
 
         return panel;
     }
-  }
+}

@@ -15,7 +15,7 @@ public class AttackGrid extends BattleGrid {
     }
 
     @Override
-    protected JPanel getCell(int x, int y, PlayerData pd, boolean isClickable)
+    protected JPanel getCell(Coordinate c, PlayerData pd, boolean isClickable)
     {
 
         JPanel panel = new JPanel();
@@ -35,12 +35,12 @@ public class AttackGrid extends BattleGrid {
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
         if(isClickable)
         {
-        panel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+            panel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
 
-                if(getClicked)
-                {
+                    if(getClicked)
+                    {
                 	// if(pd.grid[x][y] == 1)
                 	// {
                 	// panel.setBackground(Color.red);
@@ -53,13 +53,13 @@ public class AttackGrid extends BattleGrid {
 
                 	// getClicked = false;
 
+                    }
+
+
                 }
 
 
-          }
-
-
-  });
+            });
         }
         return panel;
     }
