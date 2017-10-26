@@ -56,8 +56,8 @@ public class PlayerData {
 	{
 		Ship s = null;
 
-		for (int i = 1; i <= ships.size(); i++ ) {
-			for (int j = 1; j <= ships.get(i).coords.size(); j++ ) {
+		for (int i = 1; i <= (ships.size()-1); i++ ) {
+			for (int j = 1; j <= (ships.get(i).coords.size()-1); j++ ) {
 				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
 					s = ships.get(i);
 				}
@@ -74,8 +74,8 @@ public class PlayerData {
 	 * @return   [if a ship is hit or not]
 	 */
 	public boolean isHit(int x, int y){
-		for (int i = 1; i <= ships.size(); i++ ) {
-			for (int j = 1; j <= ships.get(i).coords.size(); j++ ) {
+		for (int i = 1; i <= (ships.size()-1); i++ ) {
+			for (int j = 1; j <= (ships.get(i).coords.size()-1); j++ ) {
 				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
 					return true;
 				}
@@ -105,7 +105,11 @@ public class PlayerData {
 		 * Default empty constructor
 		 * @return [Object of type Ship]
 		 */
-		public Ship(){}
+		public Ship(){
+			size = -1;
+			count = -1;
+			coords = null;
+		}
 
 		/**
 		 * Constructor with coordinates and size
@@ -117,6 +121,7 @@ public class PlayerData {
 		public Ship(int x, int y, int s) {
 			size = s;
 			orientation = "h";
+			coords = new ArrayList<Coordinate>();
 			Collections.addAll(coords, new Coordinate(x,y), new Coordinate(x,y+1), new Coordinate(x,y+2));
 		}
 
@@ -131,6 +136,7 @@ public class PlayerData {
 		public Ship(int x, int y, int s, String o) {
 			size = s;
 			orientation = o;
+			coords = new ArrayList<Coordinate>();
 			Collections.addAll(coords, new Coordinate(x,y), new Coordinate(x,y+1), new Coordinate(x,y+2));
 		}
 
@@ -142,7 +148,7 @@ public class PlayerData {
 		 * @return   [if ship is hit or not]
 		 */
 		public boolean isHit(int x, int y, boolean countUp){
-			for (int i = 1; i <= coords.size(); i++ ) {
+			for (int i = 1; i <= (coords.size() -1) ; i++ ) {
 				if (coords.get(i).getX() == x && coords.get(i).getY() == y) {
 					// @TODO: check if we need to count up or not
 					if (countUp) {
