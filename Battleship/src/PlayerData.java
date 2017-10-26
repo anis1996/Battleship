@@ -1,63 +1,245 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 public class PlayerData {
 
 	private String name;
-	private int[][] grid;
-	public ArrayList<ship> ships;
-	
+	public ArrayList<Ship> ships;
+
+	/**
+	 * Player data constructor
+	 * @param  name [Player name /number]
+	 */
 	public PlayerData(String name) {
+		// @TODO: check if name is needed
 		this.name = name;
-		grid = new int[10][10];
-		ships = new ArrayList<ship>();
+		ships = new ArrayList<Ship>();
 	}
-	
-	public int shipscounter()
+
+	/**
+	 * Number of ships a player has
+	 * @return [number of ships]
+	 */
+	public int shipsCount()
 	{
 		return ships.size();
 	}
-	
-	public void add(int x , int y)
-	{
-		ships.add(new ship(x,y));
-	}
-	
-	public int get(int x, int y)
-	{
-		return grid[x][y];
-	}
-	
-	public class ship {
-		int X;
-		int Y;
-		int X1;
-		int X2;
 
-		public ship(int x, int y) {
-			X = x;
-			Y = y;
-			X1 = x + 1;
-			X2 = x + 2;
-			grid[x][y] = 1;
-			grid[x][y + 1] = 1;
-			grid[x][y+2] = 1;
-		}
-		
-		public boolean hitSink(int x, int y)
-		{
-			if((X == x || X1 == x || X2 == x) && Y == y)
-			{
-				grid[x][y] = 2;
-				return true;
+	/**
+	 * Adds ship to player inventory
+	 * @param x [x coordinate of ship]
+	 * @param y [y coordinate of ship]
+	 */
+	public void addShip(int x , int y)
+	{
+		ships.add(new Ship(x,y, 3));
+	}
+
+	/**
+	 * Returns ship at requested index
+	 * @param  i [index of ship]
+	 * @return   [request ship object]
+	 */
+	public Ship getShip(int i)
+	{
+		return this.ships.get(i);
+	}
+
+	/**
+	 * Returns ship at requested coordinates
+	 * @param  x [x coordinate of ship]
+	 * @param  y [y coordinate of ship]
+	 * @return   [requested ship object]
+	 */
+	public Ship getShip(int x, int y)
+	{
+		Ship s = null;
+
+		for (int i = 1; i <= ships.size(); i++ ) {
+			for (int j = 1; j <= ships.get(i).coords.size(); j++ ) {
+				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
+					s = ships.get(i);
+				}
 			}
-			 return false;
 		}
 
-		public boolean isSunk() {
-			if (grid[X][Y] == 2 && grid[X1][Y] == 2 && grid[X2][Y] == 2) {
-				return true;
+		return s;
+	}
+
+	/**
+	 * Checks if any player ship are hit
+	 * @param  x [x coordinate of hit]
+	 * @param  y [x coordinate of hit]
+	 * @return   [if a ship is hit or not]
+	 */
+	public boolean isHit(int x, int y){
+		for (int i = 1; i <= ships.size(); i++ ) {
+			for (int j = 1; j <= ships.get(i).coords.size(); j++ ) {
+				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
+					return true;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Removes all current player ships
+	 */
+	public void clear(){
+		this.ships.clear();
+	}
+
+	/**
+	 * Ship inner class
+	 */
+	public class Ship {
+		public ArrayList<Coordinate> coords;
+		private int size;
+		private int count;
+		private String orientation;
+
+		/**
+		 * Default empty constructor
+		 * @return [Object of type Ship]
+		 */
+		public Ship(){}
+
+		/**
+		 * Constructor with coordinates and size
+		 * @param  x [x coordinate of ship]
+	 	 * @param  y [y coordinate of ship]
+		 * @param  s [size of ship]
+		 * @return   [Object of type Ship]
+		 */
+		public Ship(int x, int y, int s) {
+			size = s;
+			orientation = "h";
+			Collections.addAll(coords, new Coordinate(x,y), new Coordinate(x,y+1), new Coordinate(x,y+2));
+		}
+
+		/**
+		 * Constructor with coordinates, size and orientation
+		 * @param  x [x coordinate of ship]
+	 	 * @param  y [y coordinate of ship]
+		 * @param  s [size of ship]
+		 * @param  o [orientation of ship]
+		 * @return   [Object of type Ship]
+		 */
+		public Ship(int x, int y, int s, String o) {
+			size = s;
+			orientation = o;
+			Collections.addAll(coords, new Coordinate(x,y), new Coordinate(x,y+1), new Coordinate(x,y+2));
+		}
+
+		/**
+		 * Checks for hit on ship at specified coordinates
+		 * @param  x [x coordinate of ship]
+	 	 * @param  y [y coordinate of ship]
+	 	 * @param  countUp [count increase if needed]
+		 * @return   [if ship is hit or not]
+		 */
+		public boolean isHit(int x, int y, boolean countUp){
+			for (int i = 1; i <= coords.size(); i++ ) {
+				if (coords.get(i).getX() == x && coords.get(i).getY() == y) {
+					// @TODO: check if we need to count up or not
+					if (countUp) {
+						count++;
+					}
+					return true;
+				}
 			}
 			return false;
+		}
+
+		/**
+		 * Adds coordinate to ship
+		 * @param  x [x coordinate of ship]
+	 	 * @param  y [y coordinate of ship]
+		 */
+		public void addCoord(int x, int y){
+			coords.add(new Coordinate(x,y));
+		}
+
+		/**
+		 * Checks if ship is sunk
+		 * @return [if ship is sunk or not]
+		 */
+		public boolean isSunk() {
+			return (count>=size)?true:false;
+		}
+
+		/**
+		 * Rotate ship from X to Y axis
+		 */
+		public void rotate(){
+			//@TODO: implement rotate
+		}
+
+		/**
+		 * Setters and Getters
+		 */
+		public int getCount(){
+			return count;
+		}
+
+		public String getOrientation(){
+			return orientation;
+		}
+
+		public int getSize(){
+			return size;
+		}
+
+		public void setCount( int c){
+			// @TODO: add validation
+			this.count = c;
+		}
+
+		public void setOrientation( String o){
+			// @TODO: add validation
+			this.orientation = o;
+		}
+
+		public void setSize(int s){
+			// @TODO: add validation
+			this.size = s;
+		}
+
+		/**
+		 * Coordinates inner class
+		 */
+		public class Coordinate{
+			private int X;
+			private int Y;
+
+			public Coordinate (int x, int y){
+				this.X=x;
+				this.Y=y;
+			}
+
+			/**
+			 * Setters and Getters
+			 */
+			public int getX(){
+				return X;
+			}
+
+			public int getY(){
+				return Y;
+			}
+
+			public void setX(int x){
+				// @TODO: add validation
+				this.X = x;
+			}
+
+			public void setY(int y){
+				// @TODO: add validation
+				this.Y = y;
+			}
 		}
 
 	}
