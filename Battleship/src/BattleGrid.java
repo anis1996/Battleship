@@ -11,10 +11,10 @@ public abstract class BattleGrid extends JPanel {
         self.setLayout(new GridLayout(0,10));
         for (int i = 0; i < 10; i++)
             for(int j =0; j < 10; j++) {
-                self.add(getCell(j, i, pd, click));
+                self.add(getCell(new Coordinate(j,i), pd, click));
             }
         this.add(self);
     }
 
-    protected abstract JPanel getCell(int x,int y, PlayerData pd, boolean isClickable);
+    protected abstract JPanel getCell(Coordinate c, PlayerData pd, boolean isClickable);
 }

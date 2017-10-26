@@ -5,7 +5,8 @@ import java.util.Collections;
 public class PlayerData {
 
 	private String name;
-	public ArrayList<Ship> ships;
+	private ArrayList<Ship> ships;
+	private ArrayList<Coordinate> shots;
 
 	/**
 	 * Player data constructor
@@ -15,6 +16,8 @@ public class PlayerData {
 		// @TODO: check if name is needed
 		this.name = name;
 		ships = new ArrayList<Ship>();
+		shots = new ArrayList<Coordinate>();
+
 	}
 
 	/**
@@ -31,9 +34,9 @@ public class PlayerData {
 	 * @param x [x coordinate of ship]
 	 * @param y [y coordinate of ship]
 	 */
-	public void addShip(int x , int y)
+	public void addShip(Coordinate c)
 	{
-		ships.add(new Ship(x,y, 3));
+		ships.add(new Ship(c, 3));
 	}
 
 	/**
@@ -52,13 +55,13 @@ public class PlayerData {
 	 * @param  y [y coordinate of ship]
 	 * @return   [requested ship object]
 	 */
-	public Ship getShip(int x, int y)
+	public Ship getShip(Coordinate c)
 	{
 		Ship s = null;
 
-		for (int i = 1; i < ships.size(); i++ ) {
-			for (int j = 1; j < ships.get(i).coords.size(); j++ ) {
-				if (ships.get(i).coords.get(j).getX() == x && ships.get(i).coords.get(j).getY() == y) {
+		for (int i = 0; i < ships.size(); i++ ) {
+			for (int j = 0; j < ships.get(i).coords.size(); j++ ) {
+				if (ships.get(i).coords.get(j).equals(c)) {
 					s = ships.get(i);
 				}
 			}
@@ -73,10 +76,10 @@ public class PlayerData {
 	 * @param  y [x coordinate of hit]
 	 * @return   [if a ship is hit or not]
 	 */
-	public boolean isHit(int x, int y){
-		for (int i = 1; i < ships.size(); i++ ) {
-			for (int j = 1; j < ships.get(i).coords.size(); j++ ) {
-				if (ships.get(i).coords.get(j).getX() == x && ships.get(i).coords.get(j).getY() == y) {
+	public boolean isHit(Coordinate c){
+		for (int i = 0; i < ships.size(); i++ ) {
+			for (int j = 0; j < ships.get(i).coords.size(); j++ ) {
+				if (ships.get(i).coords.get(j).equals(c)) {
 					return true;
 				}
 			}
@@ -90,8 +93,32 @@ public class PlayerData {
 	 * @param  y [description]
 	 * @return   [description]
 	 */
-	public boolean isThereShip(int x, int y){
-		return this.isHit(x,y);
+	public boolean isThereShip(Coordinate c){
+		return this.isHit(c);
+	}
+
+	public void addShot(int x, int y){
+		this.shots.add(new Coordinate(x,y));
+	}
+
+	public ArrayList<Coordinate> getShots(){
+		return shots;
+	}
+
+	public Coordinate getShot(int i){
+		return this.shots.get(i);
+	}
+
+	public Coordinate getShot(int x, int y){
+		Coordinate s = null;
+
+		for (int i = 0; i < shots.size(); i++) {
+			if (this.shots.get(i).getX() == x && this.shots.get(i).getY() == y) {
+
+				s = this.shots.get(i);
+			}
+		}
+		return s;
 	}
 
 	/**
@@ -115,9 +142,9 @@ public class PlayerData {
 		 * @return [Object of type Ship]
 		 */
 		public Ship(){
-			size = -1;
-			count = -1;
-			orientation = "";
+			size = 0;
+			count = 0;
+			orientation = "h";
 		}
 
 		/**
@@ -127,11 +154,11 @@ public class PlayerData {
 		 * @param  s [size of ship]
 		 * @return   [Object of type Ship]
 		 */
-		public Ship(int x, int y, int s) {
+		public Ship(Coordinate c, int s) {
 			size = s;
 			orientation = "h";
 			coords = new ArrayList<Coordinate>();
-			Collections.addAll(coords, new Coordinate(x,y), new Coordinate(x,y+1), new Coordinate(x,y+2));
+			Collections.addAll(coords, c, new Coordinate(c.getX() + 1, c.getY()), new Coordinate(c.getX() + 2, c.getY()));
 		}
 
 		/**
@@ -142,11 +169,11 @@ public class PlayerData {
 		 * @param  o [orientation of ship]
 		 * @return   [Object of type Ship]
 		 */
-		public Ship(int x, int y, int s, String o) {
+		public Ship(Coordinate c, int s, String o) {
 			size = s;
 			orientation = o;
 			coords = new ArrayList<Coordinate>();
-			Collections.addAll(coords, new Coordinate(x,y), new Coordinate(x,y+1), new Coordinate(x,y+2));
+			Collections.addAll(coords, c, new Coordinate(c.getX() + 1, c.getY()), new Coordinate(c.getX() + 2, c.getY()));
 		}
 
 		/**
@@ -157,7 +184,7 @@ public class PlayerData {
 		 * @return   [if ship is hit or not]
 		 */
 		public boolean isHit(int x, int y, boolean countUp){
-			for (int i = 1; i < coords.size(); i++ ) {
+			for (int i = 0; i < coords.size(); i++ ) {
 				if (coords.get(i).getX() == x && coords.get(i).getY() == y) {
 					// @TODO: check if we need to count up or not
 					if (countUp) {
@@ -223,40 +250,5 @@ public class PlayerData {
 			this.size = s;
 		}
 
-		/**
-		 * Coordinates inner class
-		 */
-		public class Coordinate{
-			private int X;
-			private int Y;
-
-			public Coordinate (int x, int y){
-				this.X=x;
-				this.Y=y;
-			}
-
-			/**
-			 * Setters and Getters
-			 */
-			public int getX(){
-				return X;
-			}
-
-			public int getY(){
-				return Y;
-			}
-
-			public void setX(int x){
-				// @TODO: add validation
-				this.X = x;
-			}
-
-			public void setY(int y){
-				// @TODO: add validation
-				this.Y = y;
-			}
-		}
-
 	}
-
 }
