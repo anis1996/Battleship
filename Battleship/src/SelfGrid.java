@@ -8,22 +8,23 @@ import java.net.*;
  * Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
-    public SelfGrid(String name, PlayerData pd) {
-        super(pd);
+    public SelfGrid(String name, PlayerData pd, boolean click) {
+        super(pd, click);
     }
 
     @Override
     protected JPanel getCell(int x ,int y , PlayerData pd, boolean isClickable)
     {
         JPanel panel = new JPanel();
-
-        if( pd.isThereShip(x, y))
+//        pd.grid[x][y] == 1
+        if( pd.grid[x][y] == 1)
         {
         	panel.setBackground(Color.white);
         }else
         {
         	panel.setBackground(Color.black);
         }
+        
         panel.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
         if (isClickable) {
@@ -33,7 +34,7 @@ public class SelfGrid extends BattleGrid {
 
                     if(pd.shipsCount()< 5)
                     {
-                     if(x < 8 && y < 8)
+                     if(x < 8 && y < 10 && pd.grid[x][y] == 0)
                      {
                       pd.addShip(x, y);
                       panel.setBackground(Color.white);
