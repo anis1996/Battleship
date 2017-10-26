@@ -17,7 +17,7 @@ public class SelfGrid extends BattleGrid {
     {
         JPanel panel = new JPanel();
 //        pd.grid[x][y] == 1
-        if( pd.grid[x][y] == 1)
+        if( pd.isHit(x, y))
         {
         	panel.setBackground(Color.white);
         }else
