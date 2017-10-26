@@ -19,11 +19,10 @@ public class AttackGrid extends BattleGrid {
     {
     	
         JPanel panel = new JPanel();
-<<<<<<< HEAD
         panel.setBackground(Color.white);
 
         
-=======
+
         if( pd.grid[x][y] == 2)
         {
         	panel.setBackground(Color.red);
@@ -35,7 +34,7 @@ public class AttackGrid extends BattleGrid {
         {
         	panel.setBackground(Color.white);
         }
->>>>>>> 6ccdd1a801d892b301ae9cd63d38cf7cd72fc8f6
+
         panel.setBorder(BorderFactory.createLineBorder(Color.red, 5));
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
         if(isClickable)
