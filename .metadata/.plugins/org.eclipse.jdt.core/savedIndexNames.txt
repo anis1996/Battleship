@@ -7,7 +7,6 @@ INDEX VERSION 1.129+C:\Users\anis\Documents\CS151\Homework4\.metadata\.plugins\o
 3260877587.index
 1075874757.index
 2137645919.index
-232379395.index
 3778645487.index
 3068640910.index
 71018339.index

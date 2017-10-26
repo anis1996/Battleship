@@ -109,7 +109,7 @@ public class PlayerData {
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	/**
