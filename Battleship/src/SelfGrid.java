@@ -17,6 +17,10 @@ public class SelfGrid extends BattleGrid {
     {
         JPanel panel = new JPanel();
 //        pd.grid[x][y] == 1
+//
+//
+        // Color c;
+        // c = (pd.isThereShip(x,y))? Color.white: Color.black;
         if( pd.isHit(x, y))
         {
         	panel.setBackground(Color.white);
@@ -24,7 +28,7 @@ public class SelfGrid extends BattleGrid {
         {
         	panel.setBackground(Color.black);
         }
-        
+
         panel.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
         if (isClickable) {
@@ -34,7 +38,7 @@ public class SelfGrid extends BattleGrid {
 
                     if(pd.shipsCount()< 5)
                     {
-                     if(x < 8 && y < 10 && pd.grid[x][y] == 0)
+                     if(x < 8 && y < 10 && !pd.isThereShip(x,y))
                      {
                       pd.addShip(x, y);
                       panel.setBackground(Color.white);
