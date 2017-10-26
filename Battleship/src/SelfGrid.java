@@ -16,7 +16,8 @@ public class SelfGrid extends BattleGrid {
     protected JPanel getCell(int x ,int y , PlayerData pd, boolean isClickable)
     {
         JPanel panel = new JPanel();
-        if( pd.isHit(x, y))
+
+        if( pd.isThereShip(x, y))
         {
         	panel.setBackground(Color.white);
         }else
