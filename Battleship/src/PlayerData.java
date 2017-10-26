@@ -56,8 +56,8 @@ public class PlayerData {
 	{
 		Ship s = null;
 
-		for (int i = 1; i <= (ships.size()-1); i++ ) {
-			for (int j = 1; j <= (ships.get(i).coords.size()-1); j++ ) {
+		for (int i = 1; i < (ships.size()); i++ ) {
+			for (int j = 1; j < (ships.get(i).coords.size()); j++ ) {
 				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
 					s = ships.get(i);
 				}
@@ -74,17 +74,26 @@ public class PlayerData {
 	 * @return   [if a ship is hit or not]
 	 */
 	public boolean isHit(int x, int y){
-		for (int i = 1; i <= (ships.size()-1); i++ ) {
-			for (int j = 1; j <= (ships.get(i).coords.size()-1); j++ ) {
-				if (ships.get(i).coords.get(j).X == x && ships.get(i).coords.get(j).Y == y) {
+		for (int i = 1; i < (ships.size()); i++ ) {
+			for (int j = 1; j < (ships.get(i).coords.size()); j++ ) {
+
+				x = ships.get(i).coords.get(j).getX();
+				y = ships.get(i).coords.get(j).getY();
+				System.out.println("X=" + y + "Y=" + y);
+
+				if (ships.get(i).coords.get(j).getX() == x && ships.get(i).coords.get(j).getY() == y) {
 					return true;
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
+	public boolean isThereShip( int x, int y)
+	{
+		return this.isHit(x,y);
+	}
 	/**
 	 * Removes all current player ships
 	 */
@@ -148,7 +157,7 @@ public class PlayerData {
 		 * @return   [if ship is hit or not]
 		 */
 		public boolean isHit(int x, int y, boolean countUp){
-			for (int i = 1; i <= (coords.size() -1) ; i++ ) {
+			for (int i = 1; i < (coords.size()) ; i++ ) {
 				if (coords.get(i).getX() == x && coords.get(i).getY() == y) {
 					// @TODO: check if we need to count up or not
 					if (countUp) {
