@@ -9,5 +9,8 @@ public class Player1SetupState implements GameState {
 		PlayerScreen player1 = new PlayerScreen("Player1", true, bs, sg, ag);
 	}
 
-    public void drawDefenseFrame(){}
+    @Override
+  	public String toString(){
+    	return "Player 1, Lay your ships!!!";
+  	}
 }

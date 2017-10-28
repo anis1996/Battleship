@@ -49,13 +49,12 @@ public class PlayerScreen extends JFrame {
         JPanel statePane = new JPanel();
         statePane.setLayout(new GridLayout());
         //contents...
-        JLabel stateLabel = new JLabel("Current state is: ");//add contents
+        JLabel stateLabel = new JLabel(bs.getCurrentState().toString());//add contents
         stateLabel.setHorizontalAlignment(JLabel.CENTER);
         statePane.add(stateLabel);
         southPanel.add(statePane);
         
         //Game Over -- last level of south panel
-
 
 
 
