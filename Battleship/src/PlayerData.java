@@ -240,7 +240,7 @@ public class PlayerData {
 			this.count = c;
 		}
 
-		public void setOrientation( String o){
+		public void setOrientation(String o){
 			// @TODO: add validation
 			this.orientation = o;
 		}
