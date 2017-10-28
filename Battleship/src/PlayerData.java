@@ -26,7 +26,31 @@ public class PlayerData {
 	 */
 	public int shipsCount()
 	{
-		return ships.size();
+		return (ships.size());
+	}
+
+	/**
+	 * Number of ships a player has
+	 * @return [number of ships]
+	 */
+	public int sunkCount()
+	{
+		int sc = 0;
+
+		for (int i = 0; i < ships.size(); i++ ) {
+			hc = 0;
+			for (int j = 0; j < ships.get(i).coords.size(); j++ ) {
+				if (ships.get(i).coords.get(j).equals(c)) {
+					count +=1;
+					if(hc >=3)
+					{
+						sc += 1;
+					}
+
+				}
+			}
+		}
+		return (sc);
 	}
 
 	/**
@@ -98,9 +122,9 @@ public class PlayerData {
 	}
 
 	public void addShot(Coordinate c){
-		if (!this.shots.contains(c)) {
-			this.shots.add(c);
-		}
+		// if (!this.shots.contains(c)) {
+		this.shots.add(c);
+		// }
 
 	}
 
