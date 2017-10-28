@@ -68,13 +68,8 @@ public class AttackGrid extends BattleGrid {
                         }
                         else
                             panel.setBackground(Color.BLUE);
-                        
-
-
                     }
                 }
-
-
             });
         }
         return panel;
