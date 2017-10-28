@@ -97,8 +97,8 @@ public class PlayerData {
 		return this.isHit(c);
 	}
 
-	public void addShot(int x, int y){
-		this.shots.add(new Coordinate(x,y));
+	public void addShot(Coordinate c){
+		this.shots.add(c);
 	}
 
 	public ArrayList<Coordinate> getShots(){
@@ -109,16 +109,16 @@ public class PlayerData {
 		return this.shots.get(i);
 	}
 
-	public Coordinate getShot(int x, int y){
-		Coordinate s = null;
+	public boolean isShot(Coordinate c){
+		// Coordinate s = null;
 
 		for (int i = 0; i < shots.size(); i++) {
-			if (this.shots.get(i).getX() == x && this.shots.get(i).getY() == y) {
-
-				s = this.shots.get(i);
+			if (this.shots.get(i).equals(c)) {
+				// s = this.shots.get(i);
+				return true;
 			}
 		}
-		return s;
+		return false;
 	}
 
 	/**
