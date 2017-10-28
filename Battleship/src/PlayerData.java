@@ -98,7 +98,10 @@ public class PlayerData {
 	}
 
 	public void addShot(Coordinate c){
-		this.shots.add(c);
+		if (!this.shots.contains(c)) {
+			this.shots.add(c);
+		}
+
 	}
 
 	public ArrayList<Coordinate> getShots(){
