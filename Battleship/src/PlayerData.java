@@ -37,10 +37,12 @@ public class PlayerData {
 	{
 		int sc = 0;
 
-		for (int i = 0; i < ships.size(); i++ ) {
-			hc = 0;
-			for (int j = 0; j < ships.get(i).coords.size(); j++ ) {
-				if (ships.get(i).coords.get(j).equals(c)) {
+		for (int i = 0; i < shots.size(); i++ ) {
+			int hc = 0;
+
+			for (int j = 0; j < ships.size(); j++ ) {
+
+				if (ships.get(j).contains(shots.get(i))) {
 					count +=1;
 					if(hc >=3)
 					{
