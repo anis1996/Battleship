@@ -3,6 +3,7 @@ public class Player2AttackState implements GameState{
 	{
 		SelfGrid sg;
 		AttackGrid ag;
+		bs.setCurrentState(this);
 		// if(bs.Player2.PlayerStatus())
   //       {
 		// 	bs.setState(new GameOverState());
@@ -12,14 +13,14 @@ public class Player2AttackState implements GameState{
 		// else
 		// {
 	if(bs.Player1.sunkCount() >= 1){
-      bs.setState(new GameOverState());
-      sg = new SelfGrid("Player2", bs.Player1, true);
-      ag = new AttackGrid("Player2", bs.Player2, false);
+      bs.setNextState(new GameOverState());
+      bs.drawFrame();
      }
-		bs.setState(new Player1AttackState());
+	else{
+		bs.setNextState(new Player1AttackState());
 		sg = new SelfGrid("Player1", bs.Player2,false);
 		ag = new AttackGrid("Player1", bs.Player1, true);
-		// }
 		PlayerScreen player2 = new PlayerScreen("Player2", true,bs, sg, ag);
 	}
+}
 }
