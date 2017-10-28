@@ -8,8 +8,8 @@ import java.net.*;
  * Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
-    public SelfGrid(String name, PlayerData pd, boolean click) {
-        super(pd, click);
+    public SelfGrid(String name, PlayerData pd, boolean isClickable) {
+        super(pd, isClickable);
     }
 
     @Override

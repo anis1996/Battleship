@@ -43,12 +43,11 @@ public class PlayerData {
 			for (int j = 0; j < ships.size(); j++ ) {
 
 				if (ships.get(j).contains(shots.get(i))) {
-					count +=1;
-					if(hc >=3)
+					count += 1;
+					if(hc >= 3)
 					{
 						sc += 1;
 					}
-
 				}
 			}
 		}
@@ -269,7 +268,7 @@ public class PlayerData {
 			this.count = c;
 		}
 
-		public void setOrientation( String o){
+		public void setOrientation(String o){
 			// @TODO: add validation
 			this.orientation = o;
 		}
