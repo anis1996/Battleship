@@ -12,7 +12,7 @@ public class Player1AttackState implements GameState{
    //  		 ag = new AttackGrid("player1", bs.Player2, false);
    //       }else
    //       {
-     if(bs.Player2.sunkCount() >= 1){
+     if(bs.Player2.sunkCount() >= 5){
       bs.setNextState(new GameOverState());
       bs.drawFrame();
      }

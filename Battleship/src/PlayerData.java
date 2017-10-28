@@ -43,7 +43,7 @@ public class PlayerData {
 			for (int j = 0; j < ships.size(); j++ ) {
 
 				if (ships.get(j).coords.contains(shots.get(i))) {
-					sc += 1;
+					hc += 1;
 					if(hc >= 3)
 					{
 						sc += 1;

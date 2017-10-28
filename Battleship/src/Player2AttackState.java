@@ -12,15 +12,15 @@ public class Player2AttackState implements GameState{
   //       }
 		// else
 		// {
-	if(bs.Player1.sunkCount() >= 1){
+	if(bs.Player1.sunkCount() >= 5){
       bs.setNextState(new GameOverState());
       bs.drawFrame();
      }
 	else{
 		bs.setNextState(new Player1AttackState());
-		sg = new SelfGrid("Player1", bs.Player2,false);
+		sg = new SelfGrid("Player1", bs.Player2, false);
 		ag = new AttackGrid("Player1", bs.Player1, true);
-		PlayerScreen player2 = new PlayerScreen("Player2", true,bs, sg, ag);
+		PlayerScreen player2 = new PlayerScreen("Player2", true, bs, sg, ag);
 	}
 }
 }
