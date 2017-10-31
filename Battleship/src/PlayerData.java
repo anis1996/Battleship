@@ -20,6 +20,7 @@ public class PlayerData {
 
 	}
 
+
 	/**
 	 * Number of ships a player has
 	 * @return [number of ships]
@@ -54,8 +55,8 @@ public class PlayerData {
 
 	/**
 	 * Adds ship to player inventory
-	 * @param x [x coordinate of ship]
-	 * @param y [y coordinate of ship]
+	 * @paramx [x coordinate of ship]
+	 * @paramy [y coordinate of ship]
 	 */
 	public void addShip(Coordinate c)
 	{
@@ -119,7 +120,16 @@ public class PlayerData {
 	public boolean isThereShip(Coordinate c){
 		return this.isHit(c);
 	}
-
+	public boolean canIPutShipHere(Coordinate c)
+	{
+		if(this.isThereShip(new Coordinate(c.getX()+1,c.getY()))||this.isThereShip(new Coordinate(c.getX()+2,c.getY())))
+		{
+			return false;
+		}else
+		{
+			return true;
+		}
+	}
 	public void addShot(Coordinate c){
 		// if (!this.shots.contains(c)) {
 		this.shots.add(c);
