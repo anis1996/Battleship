@@ -29,15 +29,15 @@ public class PlayerScreen extends JFrame {
         this.add(next, BorderLayout.CENTER);
 
         JPanel southPanel = new JPanel();
-        
+
         BoxLayout container = new BoxLayout(southPanel, BoxLayout.PAGE_AXIS);
         //Game Status -- top level of south panel
         JPanel statsPane = new JPanel();
         statsPane.setLayout(new GridLayout());
         //contents...
-        int numShipsAlive = 5 - ((name == "Player1") ? (bs.Player1.sunkCount()) : (bs.Player2.sunkCount()));
-        int numShipsSunk = ((name == "Player1") ? (bs.Player1.sunkCount()) : (bs.Player2.sunkCount()));
-        int numEnemyShipSunk = ((name == "Player1") ? (bs.Player2.sunkCount()) : (bs.Player1.sunkCount()));
+        int numShipsAlive = 5 - ((name == "p1") ? (bs.getData("p1").sunkCount()) : (bs.getData("p2").sunkCount()));
+        int numShipsSunk = ((name == "p1") ? (bs.getData("p1").sunkCount()) : (bs.getData("p2").sunkCount()));
+        int numEnemyShipSunk = ((name == "p1") ? (bs.getData("p2").sunkCount()) : (bs.getData("p1").sunkCount()));
 
         JLabel shipsAlive = new JLabel("Ships alive: "+ numShipsAlive); //add contents
         JLabel shipsSunk = new JLabel("Ships sunk: " + numShipsSunk); //add contents
@@ -53,7 +53,7 @@ public class PlayerScreen extends JFrame {
         stateLabel.setHorizontalAlignment(JLabel.CENTER);
         statePane.add(stateLabel);
         southPanel.add(statePane);
-        
+
         //Game Over -- last level of south panel
 
 

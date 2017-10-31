@@ -4,13 +4,13 @@ import java.io.InputStreamReader;
 public class BattleShip {
 	public GameState currentState;
 	public GameState nextState;
-	public PlayerData Player1;
-	public PlayerData Player2;
+	public PlayerData player1;
+	public PlayerData player2;
 	public BattleShip()
 	{
 		nextState = new Player1SetupState();
-		Player1 = new PlayerData("Player1");
-		Player2 = new PlayerData("Player2");
+		player1 = new PlayerData("p1");
+		player2 = new PlayerData("p2");
 		currentState = null;
 	}
 
@@ -19,9 +19,19 @@ public class BattleShip {
 		nextState = gs;
 	}
 
+	public void reDrawFrame()
+	{
+		currentState.drawFrame(this);
+	}
+
 	public void drawFrame()
 	{
 		nextState.drawFrame(this);
+	}
+
+	public PlayerData getData(String name)
+	{
+		return ((name == "p1")?player1:player2);
 	}
 
 	public GameState getCurrentState(){ return currentState; }

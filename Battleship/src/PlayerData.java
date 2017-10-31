@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 // import java.util.Iterator;
 
-public class PlayerData {
+public class PlayerData{
 
 	private String name;
 	private ArrayList<Ship> ships;

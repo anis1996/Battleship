@@ -9,15 +9,15 @@ import java.net.*;
 */
 public class AttackGrid extends BattleGrid {
 	private boolean isClicked = true;
-    public AttackGrid(String name, PlayerData player, boolean isClickable) {
-        super(player, isClickable);
+    public AttackGrid(BattleShip bs, String name, boolean isClickable) {
+        super(bs, name, isClickable);
 
     }
 
     @Override
-    protected JPanel getCell(Coordinate c, PlayerData pd, boolean isClickable)
+    protected JPanel getCell(BattleShip bs, String name, Coordinate c, boolean isClickable)
     {
-
+        PlayerData pd = bs.getData(name);
         JPanel panel = new JPanel();
         //To redraw grid
         if(pd.isShot(c)){
@@ -48,6 +48,7 @@ public class AttackGrid extends BattleGrid {
                             isClicked = false;
                         }
                         pd.addShot(c);
+                        bs.reDrawFrame();
                     }
                 }
             });
