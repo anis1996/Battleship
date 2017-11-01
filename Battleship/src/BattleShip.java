@@ -6,12 +6,13 @@ public class BattleShip {
 	public GameState nextState;
 	public PlayerData player1;
 	public PlayerData player2;
+
 	public BattleShip()
 	{
-		nextState = new Player1SetupState();
+		currentState = null;
 		player1 = new PlayerData("p1");
 		player2 = new PlayerData("p2");
-		currentState = null;
+
 	}
 
 	public void setNextState(GameState gs)
@@ -26,7 +27,10 @@ public class BattleShip {
 
 	public void drawFrame()
 	{
-		nextState.drawFrame(this);
+		PlayerScreen screen = new PlayerScreen(this, "p1", true);
+		nextState = new Player1SetupState(screen);
+		// screen.drawFrame();
+		// nextState.drawFrame(this);
 	}
 
 	public PlayerData getData(String name)

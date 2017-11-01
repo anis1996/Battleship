@@ -2,8 +2,10 @@
 
 public class GameOverState implements GameState{
 	private String winner;
+	private PlayerScreen ps;
 
-	public GameOverState(String winner){
+	public GameOverState(PlayerScreen ps, String winner){
+		this.ps = ps;
 		this.winner = winner;
 	}
 	public void drawFrame(BattleShip bs)

@@ -48,7 +48,7 @@ public class AttackGrid extends BattleGrid {
                             isClicked = false;
                         }
                         pd.addShot(c);
-                        bs.reDrawFrame();
+                        // bs.reDrawFrame();
                     }
                 }
             });

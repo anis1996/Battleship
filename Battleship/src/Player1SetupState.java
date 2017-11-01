@@ -1,13 +1,20 @@
 public class Player1SetupState implements GameState {
 
+    private PlayerScreen ps;
+
+
+    public Player1SetupState(PlayerScreen ps){
+        this.ps = ps;
+    }
+
 	public void drawFrame(BattleShip bs)
 	{
 		bs.setCurrentState(this);
-		bs.setNextState(new Player2SetupState());
+		bs.setNextState(new Player2SetupState(ps));
 
-        SelfGrid  sg = new SelfGrid(bs, "p1", true);
-        AttackGrid ag = new AttackGrid(bs, "p1", false);
-        PlayerScreen player1 = new PlayerScreen("p1", true, bs, sg, ag);
+        ps.addAttackGrid(new AttackGrid(bs, "p1", false));
+        ps.addSelfGrid(new SelfGrid(bs, "p1", true));
+        ps.drawFrame();
     }
 
     @Override

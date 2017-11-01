@@ -62,7 +62,14 @@
                 </target>
 
                 <target name="run">
-                    <java jar="jar/BattleShip.jar" fork="true"/>
-                </target>
+                    <!-- <java jar="jar/BattleShip.jar" fork="true"/>
+                    <target name="run"> -->
+                        <exec executable="bin/battleship/BattleShip.class">
+                            <!-- <exec dir="bin/battleship/" executable="BattleShip"> -->
+                      <!-- <arg value="${arg0}"/>
+                      <arg value="${arg1}"/> -->
+                  </exec>
+              </target>
+          <!-- </target> -->
 
-            </project>
+      </project>

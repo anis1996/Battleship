@@ -7,8 +7,24 @@ import java.net.*;
 
 public class PlayerScreen extends JFrame {
 
-    public PlayerScreen(String name, boolean show, BattleShip bs, SelfGrid sg, AttackGrid ag) {
+    private BattleShip bs;
+    private String name;
+    private boolean show;
+    private SelfGrid sg;
+    private AttackGrid ag;
+
+    public PlayerScreen(BattleShip bs, String name, boolean show) {
         super(name);
+        this.bs = bs;
+        this.name = name;
+        this.show = show;
+        this.ag = new AttackGrid(bs, name, false);
+        this.sg = new SelfGrid(bs, name, true);
+    }
+
+
+    public void drawFrame(){
+
         this.setLayout(new BorderLayout());
 
         this.add(sg, BorderLayout.EAST);
@@ -56,8 +72,6 @@ public class PlayerScreen extends JFrame {
 
         //Game Over -- last level of south panel
 
-
-
         southPanel.setLayout(container);
         this.add(southPanel, BorderLayout.SOUTH);
         this.pack();
@@ -65,7 +79,22 @@ public class PlayerScreen extends JFrame {
 
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
+    public void reDraw(){
+        this.add(sg, BorderLayout.EAST);
+        this.add(ag, BorderLayout.WEST);
+        this.revalidate();
+    }
+
+    public void addAttackGrid(AttackGrid ag)
+    {
+        this.ag = ag;
+    }
+
+    public void addSelfGrid(SelfGrid sg)
+    {
+        this.sg = sg;
     }
 
 

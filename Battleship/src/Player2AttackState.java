@@ -1,4 +1,11 @@
 public class Player2AttackState implements GameState{
+
+	private PlayerScreen ps;
+
+	public Player2AttackState(PlayerScreen ps){
+		this.ps = ps;
+	}
+
 	public void drawFrame(BattleShip bs)
 	{
 		SelfGrid sg;
@@ -13,20 +20,24 @@ public class Player2AttackState implements GameState{
 		// else
 		// {
 		if(bs.getData("p1").sunkCount() >= 5){
-		  bs.setNextState(new GameOverState("p2"));
-		  bs.drawFrame();
-		 }
-		else{
-			bs.setNextState(new Player1AttackState());
-			sg = new SelfGrid(bs, "p2", false);
-			ag = new AttackGrid(bs, "p2", true);
-			PlayerScreen player2 = new PlayerScreen("p2", true, bs, sg, ag);
+			bs.setNextState(new GameOverState(ps, "p2"));
+			// bs.drawFrame();
 		}
+		else{
+			bs.setNextState(new Player1AttackState(ps));
+			// sg = new SelfGrid(bs, "p2", false);
+			// ag = new AttackGrid(bs, "p2", true);
+			ps.addAttackGrid(new AttackGrid(bs, "p2", true));
+			ps.addSelfGrid(new SelfGrid(bs, "p2", false));
+
+			// PlayerScreen player2 = new PlayerScreen("p2", true, bs, sg, ag);
+		}
+		ps.reDraw();
 
 	}
 
 	@Override
-  	public String toString(){
-    	return "Player 2 Attack!!!";
-  	}
+	public String toString(){
+		return "Player 2 Attack!!!";
+	}
 }
