@@ -37,8 +37,7 @@ public class PlayerScreen extends JFrame {
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                hideScreen();
-                bs.drawFrame();
+               bs.screen.reDraw();
             }
         });
 
@@ -65,10 +64,10 @@ public class PlayerScreen extends JFrame {
         JPanel statePane = new JPanel();
         statePane.setLayout(new GridLayout());
         //contents...
-        JLabel stateLabel = new JLabel(bs.getCurrentState().toString());//add contents
-        stateLabel.setHorizontalAlignment(JLabel.CENTER);
-        statePane.add(stateLabel);
-        southPanel.add(statePane);
+        // JLabel stateLabel = new JLabel(bs.getCurrentState().toString());//add contents
+        // stateLabel.setHorizontalAlignment(JLabel.CENTER);
+        // statePane.add(stateLabel);
+        // southPanel.add(statePane);
 
         //Game Over -- last level of south panel
 

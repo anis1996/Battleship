@@ -6,7 +6,7 @@ public class BattleShip {
 	public GameState nextState;
 	public PlayerData player1;
 	public PlayerData player2;
-
+	public PlayerScreen screen;
 	public BattleShip()
 	{
 		currentState = null;
@@ -22,12 +22,12 @@ public class BattleShip {
 
 	public void reDrawFrame()
 	{
-		currentState.drawFrame(this);
+		screen.reDraw();
 	}
 
 	public void drawFrame()
 	{
-		PlayerScreen screen = new PlayerScreen(this, "p1", true);
+		screen = new PlayerScreen(this, "p1", true);
 		nextState = new Player1SetupState(screen);
 		// screen.drawFrame();
 		// nextState.drawFrame(this);

@@ -38,7 +38,7 @@ public class SelfGrid extends BattleGrid {
                           pd.addShip(c);
 
                           panel.setBackground(Color.white);
-                          bs.reDrawFrame();
+                          bs.screen.reDraw();
                       }
                   }
 

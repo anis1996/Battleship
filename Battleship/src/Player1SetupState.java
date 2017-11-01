@@ -5,6 +5,7 @@ public class Player1SetupState implements GameState {
 
     public Player1SetupState(PlayerScreen ps){
         this.ps = ps;
+        ps.drawFrame();
     }
 
 	public void drawFrame(BattleShip bs)
@@ -14,7 +15,7 @@ public class Player1SetupState implements GameState {
 
         ps.addAttackGrid(new AttackGrid(bs, "p1", false));
         ps.addSelfGrid(new SelfGrid(bs, "p1", true));
-        ps.drawFrame();
+        bs.screen.reDraw();
     }
 
     @Override
