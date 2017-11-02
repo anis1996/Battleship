@@ -11,26 +11,23 @@ public class AttackGrid extends BattleGrid {
 	private boolean isClicked = true;
     public AttackGrid(BattleShip bs, String name, boolean isClickable) {
         super(bs, name, isClickable);
-
     }
 
     @Override
     protected JPanel getCell(BattleShip bs, String name, Coordinate c, boolean isClickable)
     {
-        PlayerData pd = bs.getData(name);
+
+        PlayerData enemy = bs.getEnemyData(name);
         JPanel panel = new JPanel();
         //To redraw grid
-        if(pd.isShot(c)){
-            if(!pd.isHit(c))
+        if(enemy.isShot(c)){
+            if(!enemy.isHit(c))
                 panel.setBackground(Color.BLUE);
             else
                 panel.setBackground(Color.RED);
         }
         else
             panel.setBackground(Color.WHITE);
-
-
-
         panel.setBorder(BorderFactory.createLineBorder(Color.red, 5));
         panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
         if(isClickable)
@@ -41,14 +38,13 @@ public class AttackGrid extends BattleGrid {
                     //when cell is clicked
                     if(isClicked)
                     {
-                        if(pd.isThereShip(c))
+                        if(enemy.isThereShip(c))
                             panel.setBackground(Color.RED);
                         else{
                             panel.setBackground(Color.BLUE);
                             isClicked = false;
                         }
-                        pd.addShot(c);
-
+                        enemy.addShot(c);
                     }
                 }
             });

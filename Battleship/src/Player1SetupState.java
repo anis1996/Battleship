@@ -4,7 +4,6 @@ public class Player1SetupState implements GameState {
     PlayerScreen player1;
     SelfGrid  sg;
     AttackGrid ag;
-
     BattleShip  bs;
 	public void drawFrame(BattleShip bs)
 	{
@@ -13,7 +12,7 @@ public class Player1SetupState implements GameState {
 		bs.setCurrentState(this);
 		bs.setNextState(new Player2SetupState());
 
-         sg = new SelfGrid(bs, "p1", true);
+        sg = new SelfGrid(bs, "p1", true);
         ag = new AttackGrid(bs, "p1", false);
         player1 = new PlayerScreen("p1", true, bs, sg, ag);
     }

@@ -9,8 +9,6 @@ public class Player1AttackState implements GameState{
             bs.setNextState(new GameOverState("p1"));
             bs.drawFrame();
         }
-
-
         else{
           bs.setNextState(new Player2AttackState());
           sg = new SelfGrid(bs, "p1", false);

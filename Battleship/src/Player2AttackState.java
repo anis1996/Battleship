@@ -4,14 +4,7 @@ public class Player2AttackState implements GameState{
 		SelfGrid sg;
 		AttackGrid ag;
 		bs.setCurrentState(this);
-		// if(bs.Player2.PlayerStatus())
-  //       {
-		// 	bs.setState(new GameOverState());
-		// 	sg = new SelfGrid("Player1", bs.Player2,true);
-		// 	ag = new AttackGrid("player1", bs.Player1, false);
-  //       }
-		// else
-		// {
+
 		if(bs.getData("p1").sunkCount() >= 5){
 		  bs.setNextState(new GameOverState("p2"));
 		  bs.drawFrame();
@@ -22,7 +15,6 @@ public class Player2AttackState implements GameState{
 			ag = new AttackGrid(bs, "p2", true);
 			PlayerScreen player2 = new PlayerScreen("p2", true, bs, sg, ag);
 		}
-
 	}
 
 	public void validate()
