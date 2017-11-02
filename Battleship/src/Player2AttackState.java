@@ -25,6 +25,8 @@ public class Player2AttackState implements GameState{
 
 	}
 
+	public void validate()
+	{}
 	@Override
   	public String toString(){
     	return "Player 2 Attack!!!";

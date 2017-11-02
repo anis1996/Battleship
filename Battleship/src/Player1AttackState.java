@@ -17,9 +17,14 @@ public class Player1AttackState implements GameState{
           ag = new AttackGrid(bs, "p1", true);
           PlayerScreen player1 = new PlayerScreen("p1", true, bs, sg,ag);
       }
+
   }
 
-  @Override
+    public void validate()
+    {}
+
+
+    @Override
   public String toString(){
       return "Player 1 Attack!!!";
   }

@@ -36,7 +36,6 @@ public class SelfGrid extends BattleGrid {
                        if(c.getX() < 8 && c.getY() < 10 && !pd.isThereShip(c) && pd.canIPutShipHere(c))
                        {
                           pd.addShip(c);
-
                           panel.setBackground(Color.white);
                           bs.reDrawFrame();
                       }

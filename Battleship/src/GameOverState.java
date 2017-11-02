@@ -16,7 +16,8 @@ public class GameOverState implements GameState{
 		// AttackGrid ag = new AttackGrid("player1", bs.Player2,false);
 		// PlayerScreen player2 = new PlayerScreen("Player2", true, bs, sg, ag);
 	}
-
+	public void validate()
+	{}
 	@Override
 	public String toString(){
 		return ("Game Over..." + winner + " won");

@@ -6,6 +6,8 @@ public class BattleShip {
 	public GameState nextState;
 	public PlayerData player1;
 	public PlayerData player2;
+	SelfGrid sg;
+	AttackGrid ag;
 	public BattleShip()
 	{
 		nextState = new Player1SetupState();
@@ -21,7 +23,10 @@ public class BattleShip {
 
 	public void reDrawFrame()
 	{
-		currentState.drawFrame(this);
+
+			currentState.validate();
+
+
 	}
 
 	public void drawFrame()
