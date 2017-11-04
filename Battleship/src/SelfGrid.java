@@ -24,7 +24,7 @@ public class SelfGrid extends BattleGrid {
         {
             panel.setBackground(Color.GREEN);
 
-        }else panel.setBackground(Color.white);
+        }else panel.setBackground(Color.ORANGE);
         else
         	panel.setBackground(Color.black);
 
@@ -40,7 +40,6 @@ public class SelfGrid extends BattleGrid {
                        if(c.getX() < 8 && c.getY() < 10 && !pd.isThereShip(c) && pd.canIPutShipHere(c))
                        {
                           pd.addShip(c);
-//                          panel.setBackground(Color.white);
                           bs.reDrawFrame();
                       }
                   }

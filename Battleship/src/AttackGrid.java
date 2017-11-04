@@ -9,20 +9,20 @@ import java.net.*;
 */
 public class AttackGrid extends BattleGrid {
 	private boolean isClicked = true;
+
     public AttackGrid(BattleShip bs, String name, boolean isClickable) {
         super(bs, name, isClickable);
     }
-
     @Override
     protected JPanel getCell(BattleShip bs, String name, Coordinate c, boolean isClickable)
     {
-
         PlayerData enemy = bs.getEnemyData(name);
         JPanel panel = new JPanel();
         //To redraw grid
         if(enemy.isShot(c)){
-            if(!enemy.isHit(c))
+            if(!enemy.isHit(c)) {
                 panel.setBackground(Color.BLUE);
+            }
             else
                 panel.setBackground(Color.RED);
         }
