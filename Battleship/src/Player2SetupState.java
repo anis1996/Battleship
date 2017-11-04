@@ -1,24 +1,27 @@
+import java.awt.*;
+
 public class Player2SetupState implements GameState{
-
-    private PlayerScreen ps;
-
-    public Player2SetupState(PlayerScreen ps){
-        this.ps = ps;
-    }
-
-    public void drawFrame(BattleShip bs)
+	PlayerScreen player2;
+	SelfGrid sg;
+	AttackGrid ag;
+	BattleShip bs;
+	public void drawFrame(BattleShip bs)
 	{
-
+		this.bs = bs;
 		bs.setCurrentState(this);
-		bs.setNextState(new Player1AttackState(ps));
+		bs.setNextState(new Player1AttackState());
+		sg = new SelfGrid(bs, "p2", true);
+		ag = new AttackGrid(bs, "p2",false);
+		player2 = new PlayerScreen("p2", true, bs, sg, ag);
+	}
 
-		// SelfGrid sg = new SelfGrid(bs, "p2", true);
-		// AttackGrid ag = new AttackGrid(bs, "p2",false);
-		// PlayerScreen player2 = new PlayerScreen("p2", true, bs, sg, ag);
-
-        ps.addAttackGrid(new AttackGrid(bs, "p2", false));
-        ps.addSelfGrid(new SelfGrid(bs, "p2", true));
-        ps.reDraw();
+	public void validate()
+	{
+		sg = new SelfGrid(bs, "p2", true);
+		ag = new AttackGrid(bs, "p2",false);
+		player2.add(sg, BorderLayout.EAST );
+		player2.add(ag, BorderLayout.WEST );
+		player2.revalidate();
 	}
 
 	@Override
