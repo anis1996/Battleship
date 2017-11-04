@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class PlayerData{
 
@@ -17,7 +18,6 @@ public class PlayerData{
 		shots = new ArrayList<Coordinate>();
 
 	}
-
 
 	/**
 	 * Number of ships a player has
@@ -62,37 +62,6 @@ public class PlayerData{
 	}
 
 	/**
-	 * Returns ship at requested index
-	 * @param  i [index of ship]
-	 * @return   [request ship object]
-	 */
-	public Ship getShip(int i)
-	{
-		return this.ships.get(i);
-	}
-
-	/**
-	 * Returns ship at requested coordinates
-	 * @param  x [x coordinate of ship]
-	 * @param  y [y coordinate of ship]
-	 * @return   [requested ship object]
-	 */
-	public Ship getShip(Coordinate c)
-	{
-		Ship s = null;
-
-		for (int i = 0; i < ships.size(); i++ ) {
-			for (int j = 0; j < ships.get(i).coords.size(); j++ ) {
-				if (ships.get(i).coords.get(j).equals(c)) {
-					s = ships.get(i);
-				}
-			}
-		}
-
-		return s;
-	}
-
-	/**
 	 * Checks if any player ship are hit
 	 * @param  x [x coordinate of hit]
 	 * @param  y [x coordinate of hit]
@@ -109,30 +78,15 @@ public class PlayerData{
 		return false;
 	}
 
-	/**
-	 * [isThereShip description]
-	 * @param  x [description]
-	 * @param  y [description]
-	 * @return   [description]
-	 */
-	public boolean isThereShip(Coordinate c){
-		return this.isHit(c);
-	}
 	public boolean canIPutShipHere(Coordinate c)
 	{
-		if(this.isThereShip(new Coordinate(c.getX()+1,c.getY()))||this.isThereShip(new Coordinate(c.getX()+2,c.getY())))
-		{
-			return false;
-		}else
-		{
-			return true;
-		}
+		return
+				(this.isHit(new Coordinate(c.getX()+1,c.getY()))||this.isHit(new Coordinate(c.getX()+2,c.getY())))?
+						false : true;
+
 	}
 	public void addShot(Coordinate c){
-		// if (!this.shots.contains(c)) {
 		this.shots.add(c);
-		// }
-
 	}
 
 	public ArrayList<Coordinate> getShots(){

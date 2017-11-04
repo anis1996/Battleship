@@ -1,9 +1,10 @@
-import java.io.IOException;
-import java.io.InputStreamReader;
-
+/**
+ * Represents a BattleShipGame
+ */
 public class BattleShip {
-	public GameState currentState;
-	public GameState nextState;
+	private GameState currentState; //current state of the game
+	private GameState nextState;	//following state of the game
+	//2 player objects
 	public PlayerData player1;
 	public PlayerData player2;
 
@@ -25,6 +26,9 @@ public class BattleShip {
 		currentState.validate();
 	}
 
+	/**
+	 * Calls the next state's draw method
+	 */
 	public void drawFrame()
 	{
 		nextState.drawFrame(this);

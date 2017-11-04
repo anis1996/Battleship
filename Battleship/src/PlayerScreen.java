@@ -4,10 +4,18 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 
-
+/**
+ * Class to represent the grids for the game
+ */
 public class PlayerScreen extends JFrame {
 
-    public PlayerScreen(String name, boolean show, BattleShip bs, SelfGrid sg, AttackGrid ag) {
+    /**
+     * @param name Name of the current player's turn
+     * @param bs Is the BattleShip game
+     * @param sg is the player's self grid
+     * @param ag is the player's attack grid
+     */
+    public PlayerScreen(String name, BattleShip bs, SelfGrid sg, AttackGrid ag) {
         super(name);
         this.setLayout(new BorderLayout());
 
@@ -17,7 +25,7 @@ public class PlayerScreen extends JFrame {
 
         this.add(new JLabel(name), BorderLayout.NORTH);
 
-        // next button in centre console
+        // Creating and adding functionality to the next button in centre of the layout
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -27,13 +35,9 @@ public class PlayerScreen extends JFrame {
                 {
                     hideScreen();
                     bs.drawFrame();
-
-
                 }else
-                { JOptionPane.showMessageDialog(PlayerScreen.this,
+                     JOptionPane.showMessageDialog(PlayerScreen.this,
                             "Place 5 Ships Before Continue");
-                }
-
             }
         });
 
@@ -72,14 +76,10 @@ public class PlayerScreen extends JFrame {
         statePane.add(stateLabel);
         southPanel.add(statePane);
 
-        //Game Over -- last level of south panel
-
         southPanel.setLayout(container);
         this.add(southPanel, BorderLayout.SOUTH);
         this.pack();
-        this.setVisible(show);
-
-
+        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
