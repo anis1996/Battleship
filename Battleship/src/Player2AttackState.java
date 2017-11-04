@@ -1,8 +1,11 @@
+/**
+ * Class that represents the attacking stage for Player 2
+ */
 public class Player2AttackState implements GameState{
+
+	@Override
 	public void drawFrame(BattleShip bs)
 	{
-		SelfGrid sg;
-		AttackGrid ag;
 		bs.setCurrentState(this);
 
 		if(bs.getData("p2").sunkCount() >= 5){
@@ -11,16 +14,17 @@ public class Player2AttackState implements GameState{
 		 }
 		else{
 			bs.setNextState(new Player1AttackState());
-			sg = new SelfGrid(bs, "p2", false);
-			ag = new AttackGrid(bs, "p2", true);
-			PlayerScreen player2 = new PlayerScreen("p2", true, bs, sg, ag);
+			SelfGrid sg = new SelfGrid(bs, "p2", false);
+			AttackGrid ag = new AttackGrid(bs, "p2", true);
+			PlayerScreen player2 = new PlayerScreen("p2", bs, sg, ag);
 		}
 	}
 
-	public void validate()
-	{}
+	@Override
+	public void validate() {}
+
 	@Override
   	public String toString(){
-    	return "Player 2 Attack!!!";
+    	return "Player 2 Attack on red grid(Left Side)!!!";
   	}
 }
