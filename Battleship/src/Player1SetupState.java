@@ -29,6 +29,6 @@ public class Player1SetupState implements GameState {
 
     @Override
     public String toString(){
-    	return "Player 1, Lay your ships!!!";
+    	return "Player 1, Place your 5 Ships in Blue Grid(Right Side)!!!";
     }
 }

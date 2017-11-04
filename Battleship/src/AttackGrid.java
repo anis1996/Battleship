@@ -38,8 +38,9 @@ public class AttackGrid extends BattleGrid {
                     //when cell is clicked
                     if(isClicked)
                     {
-                        if(enemy.isThereShip(c))
+                        if(enemy.isThereShip(c)) {
                             panel.setBackground(Color.RED);
+                        }
                         else{
                             panel.setBackground(Color.BLUE);
                             isClicked = false;

@@ -21,8 +21,17 @@ public class PlayerScreen extends JFrame {
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                hideScreen();
-                bs.drawFrame();
+                PlayerData pd  ;
+                pd = (name == "p1")?  bs.player1: bs.player2;
+                if(pd.shipsCount() >= 5 )
+                {   hideScreen();
+                    bs.drawFrame();
+                }else
+                {
+                     JOptionPane.showMessageDialog(PlayerScreen.this,
+                            "Place 5 Ships Before Continue");
+                }
+
             }
         });
 
@@ -31,6 +40,9 @@ public class PlayerScreen extends JFrame {
         JPanel southPanel = new JPanel();
 
         BoxLayout container = new BoxLayout(southPanel, BoxLayout.PAGE_AXIS);
+        JPanel statsPane1 = new JPanel();
+        JLabel missShots = new JLabel("Miss Shots(BLUE)");
+        statsPane1.add(missShots);
         //Game Status -- top level of south panel
         JPanel statsPane = new JPanel();
         statsPane.setLayout(new GridLayout());
@@ -39,11 +51,15 @@ public class PlayerScreen extends JFrame {
         int numShipsSunk = ((name == "p1") ? (bs.getData("p1").sunkCount()) : (bs.getData("p2").sunkCount()));
         int numEnemyShipSunk = ((name == "p1") ? (bs.getData("p2").sunkCount()) : (bs.getData("p1").sunkCount()));
 
-        JLabel shipsAlive = new JLabel("Ships alive: "+ numShipsAlive); //add contents
-        JLabel shipsSunk = new JLabel("Ships sunk: " + numShipsSunk); //add contents
-        JLabel enemyShipsSunk = new JLabel("Enemy ships sunk: " + numEnemyShipSunk); //add contents
+        JLabel shipsAlive = new JLabel("Ships alive(WHITE): "+ numShipsAlive); //add contents
+        JLabel shipsSunk = new JLabel("Ships sunk(GREEN): " + numShipsSunk); //add contents
+        JLabel enemyShipsSunk = new JLabel("Enemy ships sunk(RED CELL): " + numEnemyShipSunk); //add contents
+
+
         statsPane.add(shipsAlive); statsPane.add(shipsSunk); statsPane.add(enemyShipsSunk);
+
         southPanel.add(statsPane);
+        southPanel.add(statsPane1);
 
         //Current State -- mid level of south panel
         JPanel statePane = new JPanel();
@@ -55,8 +71,6 @@ public class PlayerScreen extends JFrame {
         southPanel.add(statePane);
 
         //Game Over -- last level of south panel
-
-
 
         southPanel.setLayout(container);
         this.add(southPanel, BorderLayout.SOUTH);

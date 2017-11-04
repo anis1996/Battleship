@@ -20,7 +20,11 @@ public class SelfGrid extends BattleGrid {
         PlayerData pd = bs.getData(name);
 
         if( pd.isThereShip(c))
-        	panel.setBackground(Color.white);
+           if (pd.isShot(c))
+        {
+            panel.setBackground(Color.GREEN);
+
+        }else panel.setBackground(Color.white);
         else
         	panel.setBackground(Color.black);
 

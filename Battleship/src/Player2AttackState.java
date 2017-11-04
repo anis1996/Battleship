@@ -5,8 +5,8 @@ public class Player2AttackState implements GameState{
 		AttackGrid ag;
 		bs.setCurrentState(this);
 
-		if(bs.getData("p1").sunkCount() >= 5){
-		  bs.setNextState(new GameOverState("p2"));
+		if(bs.getData("p2").sunkCount() >= 5){
+		  bs.setNextState(new GameOverState("p1"));
 		  bs.drawFrame();
 		 }
 		else{
