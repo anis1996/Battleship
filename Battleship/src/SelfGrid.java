@@ -46,7 +46,6 @@ public class SelfGrid extends BattleGrid {
 
               }
           });
-
         }
         return panel;
     }

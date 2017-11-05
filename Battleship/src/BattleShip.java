@@ -11,8 +11,8 @@ public class BattleShip {
 	public BattleShip()
 	{
 		nextState = new Player1SetupState();
-		player1 = new PlayerData("p1");
-		player2 = new PlayerData("p2");
+		player1 = new PlayerData("Player 1");
+		player2 = new PlayerData("Player 2");
 		currentState = null;
 	}
 
@@ -36,12 +36,12 @@ public class BattleShip {
 
 	public PlayerData getData(String name)
 	{
-		return ((name == "p1")?player1:player2);
+		return ((name == "Player 1") ? player1 : player2);
 	}
 
 	public PlayerData getEnemyData(String name)
 	{
-		return ((name == "p1")?player2:player1);
+		return ((name == "Player 1") ? player2 : player1);
 	}
 
 	public GameState getCurrentState(){ return currentState; }

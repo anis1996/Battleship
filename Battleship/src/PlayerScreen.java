@@ -30,14 +30,13 @@ public class PlayerScreen extends JFrame {
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 PlayerData pd  ;
-                pd = (name == "p1")?  bs.player1: bs.player2;
+                pd = (name == "Player 1")?  bs.player1: bs.player2;
                 if(pd.shipsCount() >= 5  )
                 {
                     hideScreen();
                     bs.drawFrame();
                 }else
-                     JOptionPane.showMessageDialog(PlayerScreen.this,
-                            "Place 5 Ships Before Continue");
+                     JOptionPane.showMessageDialog(PlayerScreen.this, "Place 5 Ships Before Continue");
             }
         });
 
@@ -47,19 +46,20 @@ public class PlayerScreen extends JFrame {
 
         BoxLayout container = new BoxLayout(southPanel, BoxLayout.PAGE_AXIS);
         JPanel statsPane1 = new JPanel();
-        JLabel missShots = new JLabel("Miss Shots(BLUE)");
+        JLabel missShots = new JLabel("Miss Shots(Blue cells)");
+
         statsPane1.add(missShots);
         //Game Status -- top level of south panel
         JPanel statsPane = new JPanel();
         statsPane.setLayout(new GridLayout());
         //contents...
-        int numShipsAlive = 5 - ((name == "p1") ? (bs.getData("p1").sunkCount()) : (bs.getData("p2").sunkCount()));
-        int numShipsSunk = ((name == "p1") ? (bs.getData("p1").sunkCount()) : (bs.getData("p2").sunkCount()));
-        int numEnemyShipSunk = ((name == "p1") ? (bs.getData("p2").sunkCount()) : (bs.getData("p1").sunkCount()));
+        int numShipsAlive = 5 - ((name == "Player 1") ? (bs.getData("Player 1").sunkCount()) : (bs.getData("Player 2").sunkCount()));
+        int numShipsSunk = ((name == "Player 1") ? (bs.getData("Player 1").sunkCount()) : (bs.getData("Player 2").sunkCount()));
+        int numEnemyShipSunk = ((name == "Player 1") ? (bs.getData("Player 2").sunkCount()) : (bs.getData("Player 1").sunkCount()));
 
-        JLabel shipsAlive = new JLabel("Ships alive(ORANGE): "+ numShipsAlive); //add contents
-        JLabel shipsSunk = new JLabel("Ships sunk(GREEN): " + numShipsSunk); //add contents
-        JLabel enemyShipsSunk = new JLabel("Enemy ships sunk(RED CELL): " + numEnemyShipSunk); //add contents
+        JLabel shipsAlive = new JLabel("Ships alive(Orange Cells): "+ numShipsAlive); //add contents
+        JLabel shipsSunk = new JLabel("Ships sunk(Green Cells): " + numShipsSunk); //add contents
+        JLabel enemyShipsSunk = new JLabel("Enemy ships sunk(Red Cells): " + numEnemyShipSunk); //add contents
 
 
         statsPane.add(shipsAlive); statsPane.add(shipsSunk); statsPane.add(enemyShipsSunk);

@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Class to represent grids
+ */
 public abstract class BattleGrid extends JPanel {
     public BattleGrid(BattleShip bs, String name, boolean click) {
 
@@ -16,7 +19,6 @@ public abstract class BattleGrid extends JPanel {
             this.add(self);
 
     }
-
     /**
      * Returns a panel depending on what is in the current cell
      * @param bs is the BattleShip game

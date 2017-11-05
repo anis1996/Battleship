@@ -12,7 +12,6 @@ public class PlayerData{
 	 * @param  name [Player name /number]
 	 */
 	public PlayerData(String name) {
-		// @TODO: check if name is needed
 		this.name = name;
 		ships = new ArrayList<Ship>();
 		shots = new ArrayList<Coordinate>();
@@ -198,14 +197,13 @@ public class PlayerData{
 		 * @return [if ship is sunk or not]
 		 */
 		public boolean isSunk() {
-			return (count>=size)?true:false;
+			return (count >= size) ? true : false;
 		}
 
 		/**
 		 * Rotate ship from X to Y axis
 		 */
 		public void rotate(){
-			//@TODO: implement rotate
 		}
 
 		/**
